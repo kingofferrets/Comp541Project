@@ -1,0 +1,22 @@
+
+\section{Related Work}
+
+In our related work, we cover three main areas. In Section \ref{sec:related:extraction} we cover the extraction of SAT equations from cryptographic algorithms. In Section \ref{sec:related:satattacks} we cover in more detail previous cryptographic attacks through SAT solvers. In Section \ref{sec:related:otherattacks} we cover alternative approaches to SAT solving for Algebraic Cryptanalysis.
+
+\subsection{From Cryptography to SAT}
+\label{sec:related:extraction}
+Algebraic equations extracted from cryptographic algorithms are often naturally expressed in algebraic normal form (ANF). We are unaware of any tools which can effectively solve ANF equations directly. Instead the algebraic equations are converted into an alternative form and fed into an equation solver. As seen in work by Bard et. al \cite{BCJ07}, the algebraic equations are most commonly rewritten as a boolean formula and solved using a SAT solver. Some tool-sets like CryptLogVer \cite{MS13} exist to ease this conversion. Feasible SAT solving directly translates to feasible cryptographic attacks.
+
+\subsection{Cryptographic attacks using SAT Solvers}
+\label{sec:related:satattacks}
+The rise of SAT solvers has enabled an entire host of cryptanalytic attacks. Courtois et. al \cite{CNO08} claimed to have formulated an attack on Crypto-1, a stream cipher used in many RFID tags, by converting the cipher to a SAT formula and solving for the key (although more specialized attacks \cite{GGMRVSJ08} later proved to be more effective). McDonald et. al \cite{MCP07} used a generic SAT solver to defeat two simplified stream ciphers within minutes. These results can be improved even further by using a SAT solver specialized for cryptographic formulas. Soos et. al \cite{SNC09} augmented an existing SAT solver to better support XOR constraints and were able to attack these stream ciphers even faster. This work was later developed into the {CryptoMiniSAT} solver.
+
+Despite the generality of these approaches, the resulting attacks often outperform more specialized approaches despite limited algebraic structure. For example, Courtois and Bard \cite{CB07} applied these techniques to develop the fastest known (at the time) attack on a limited form of DES.
+
+These techniques can also be applied to attack hash functions. Mironov and Zhang \cite{MZ06} used a generic SAT solver to successfully generate collisions in MD4 and MD5 hash functions. They also studied the performance of a wide range of solvers on the SAT formulas generated from MD5. Soon after, De et. al \cite{DKV07} attempted to encode the inversion of MD4 and MD5 hash functions as a SAT formula, although this attack was infeasible against the full hash. A more recent attempt by Morawiecki and Srebrny \cite{MS13} achieved a preimage attack against a reduced version of Keccak, but again failed against the full hash.
+
+\subsection{Alternatives to SAT Solvers}
+\label{sec:related:otherattacks}
+Other approaches to algebraic cryptanalysis were attempted before the SAT revolution. In particular, Faug\`{e}re and Joux \cite{FJ03} introduced cryptanalysis using Gr\"{o}bner bases in 2003. A comparison by Erickson, Ding, and Christensen \cite{EDC09} in 2009 showed that SAT approaches outperformed the Gr\"{o}bner basis approach on simplified problems, but struggled against cryptography strong enough for practical use. Brickenstein and Dreyer \cite{BD09} originated a technique for solving Boolean polynomials with Gr\"{o}bner bases very similar to SAT. A 2006 survey paper by Cortier et. al \cite{CDL06} collects many different cryptographic protocols and known attacks on protocols that use those properties, organized by the relevant properties.
+
+More recently, the performance of Satisfiability Modulo Theory (SMT) solvers has also improved spectacularly. \cite{BDMOS12} SMT solvers have been successfully employed to attack some small block ciphers \cite{Stanek14}, but have not been widely used in cryptanalysis.

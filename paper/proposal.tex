@@ -1,0 +1,41 @@
+\section{Project Proposal}
+
+Algebraic structure is often beneficial when developing cryptographic primitives. For example, Anshel, Anshel, and Goldfeld's public key algorithm \cite{AAG99} relies heavily on the algebraic properties of the cryptography. However, these algebraic properties can leave room for information to be deduced by the attacker without access to the key. Algebraic Cryptanalysis \cite{Bard09} is the study of breaking cryptography by solving algebraic equations which take advantage of underlying algebraic structure. In particular, these algebraic equations are most commonly rewritten as a boolean formula and solved using a SAT solver. Feasible SAT solving therefore translates directly to feasible cryptographic attacks.
+
+Boolean Satisfiability (SAT) is the quintessential NP-complete problem and so all known algorithms are infeasible in the worst case. Despite this, the development of conflict-driven clause-learning (CDCL) solvers has recently led to a ``SAT Revolution" of high-performance solvers. \cite{BHMW09} Modern SAT solvers can realistically scale to many industrial formulas with millions of variables by combining backtracking search with rich heuristics. \cite{MZ09} SAT solvers have consistently improved from year to year, driven by a popular yearly competition among more than 60 solvers. \cite{JLRS12}
+
+The rise of SAT solvers has enabled an entire host of cryptanalytic attacks. However, many of these attacks took place  \cite{CB07,CNO08,DKV07,MCP07,MZ06} eight or nine years ago. SAT solvers have continued to improve dramatically over this time on other applications. We hypothesize that these advancements in SAT solving dramatically improve the feasibility of cryptographic attacks through SAT as well.
+
+To test this hypothesis, we have selected two modern SAT solvers, CryptoMiniSat and Glucose, and an older SAT solver MiniSat. These solvers are described in more detail in Section \ref{sec:existingtools}. Using these three solvers, we will replicate the following four experiments:
+\begin{enumerate}
+	\item In 2007, De et. al \cite{DKV07} used the MiniSat solver to perform an inversion attack on a weakened form of MD4 and MD5 hash functions, although this attack was infeasible against the full hash.
+	
+	\item A 2007 attack by Courtois and Bard on the DES \cite{CB07}, which does not rely on any particular aspect of DES but works on 6x4 S-boxes in general. The SAT attack broke 6 rounds of DES in 68 seconds using MiniSat.
+	
+	\item The KECCAK hash function was recently chosen as the new SHA-3 standard \cite{USDOC15}. In 2013, Morawiecki and Srebrny \cite{MS13} performed an inversion attack on a weakened form of a {KECCAK} hash function using a variety of solvers. 
+	
+	\item In 2009, Soos et. al \cite{SNC09} introduced the idea of XOR constraints on SAT solving, which led to the development of CryptoMiniSat. They attacked Bivium, Crypto-1, and HiTag2, with best success against Crypto-1.
+\end{enumerate}
+
+We hypothesize that both CryptoMiniSat and Glucose will outperform MiniSat for these attacks. By comparing modern solvers to a contemporary solver, instead of comparing the performance of modern solvers directly to the results reported in each prior work, we hope to isolate the algorithmic improvement of SAT solvers from the improvement in the underlying hardware.
+
+\subsection{SAT Solvers}
+\label{sec:existingtools}
+
+We will compare the performance of three SAT solvers across a variety of cryptographic problems. More specifically, we have selected to test a modern incremental solver CryptoMiniSat, and modern parallel solver Glucose-Syrup, and an older solver MiniSat.
+
+CryptoMiniSat \footnote{http://www.msoos.org/cryptominisat4/} tied for 1st in the Incremental track of the recent 2015 SAT-Race. CryptoMiniSat is the result of the work of Soos et. al \cite{SNC09} to extend MiniSat to work more naturally on cryptographic problems.  In particular, CryptoMiniSat natively supports XOR constraints directly and avoids reducing the XOR constraints into CNF. We will use the 4.5.3 release of the CryptoMiniSat solver.
+
+Glucose-Syrup \footnote{http://www.labri.fr/perso/lsimon/glucose/} took 1st place in the Parallel track and 3rd place in the Incremental track of the recent 2015 SAT Race. Glucose is a parallel solver which specializes in the addition and deletion of learned clauses. We will use the 4.0 release of the Glucose solver.
+
+MiniSat \footnote{http://minisat.se/MiniSat.html} is one of the most common solvers used in the four cryptographic attacks above. MiniSat is a simple and efficient CDCL SAT solver and so has formed the base of many more advanced solvers over the last decade (in particular, MiniSat is the base of CryptoMiniSat). We will use the 2.0 release of the MiniSat solver, released in 2007, to provide a baseline for the algorithmic improvements of the other solvers.
+
+\subsection{Milestones}
+We expect to cover three major project milestones.
+\begin{enumerate}
+	\item By March 16th, we expect to have prepared our toolset for the analysis. In particular, we will set up the three SAT solvers listed in Section \ref{sec:existingtools} on the Rice DAVinCI cluster.
+	
+	\item By March 30th, we expect to have completed the first two of the attacks listed above. Jeffrey will replicate the attack by De at. al \cite{DKV07} and Corey will replicate the attack by Courtois and Bard \cite{CB07}.
+	
+	\item By April 22nd, we expect to have completed the other two attacks listed above. Jeffrey will replicate the attack by Morawiecki and Srebrny \cite{MS13} and Corey will replicate the attack by Soos et. al \cite{SNC09}.
+\end{enumerate}
