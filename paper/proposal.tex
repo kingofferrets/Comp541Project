@@ -8,13 +8,13 @@ The rise of SAT solvers has enabled an entire host of cryptanalytic attacks. How
 
 To test this hypothesis, we have selected two modern SAT solvers, CryptoMiniSat and Glucose, and an older SAT solver MiniSat. These solvers are described in more detail in Section \ref{sec:existingtools}. Using these three solvers, we will replicate the following four experiments:
 \begin{enumerate}
+	\item In 2009, Soos et. al \cite{SNC09} introduced the idea of XOR constraints on SAT solving, which led to the development of CryptoMiniSat. They attacked Bivium, Crypto-1, and HiTag2, with best success against Crypto-1.
+	
 	\item In 2007, De et. al \cite{DKV07} used the MiniSat solver to perform an inversion attack on a weakened form of MD4 and MD5 hash functions, although this attack was infeasible against the full hash.
 	
 	\item A 2007 attack by Courtois and Bard on the DES \cite{CB07}, which does not rely on any particular aspect of DES but works on 6x4 S-boxes in general. The SAT attack broke 6 rounds of DES in 68 seconds using MiniSat.
 	
 	\item The KECCAK hash function was recently chosen as the new SHA-3 standard \cite{USDOC15}. In 2013, Morawiecki and Srebrny \cite{MS13} performed an inversion attack on a weakened form of a {KECCAK} hash function using a variety of solvers. 
-	
-	\item In 2009, Soos et. al \cite{SNC09} introduced the idea of XOR constraints on SAT solving, which led to the development of CryptoMiniSat. They attacked Bivium, Crypto-1, and HiTag2, with best success against Crypto-1.
 \end{enumerate}
 
 We hypothesize that both CryptoMiniSat and Glucose will outperform MiniSat for these attacks. By comparing modern solvers to a contemporary solver, instead of comparing the performance of modern solvers directly to the results reported in each prior work, we hope to isolate the algorithmic improvement of SAT solvers from the improvement in the underlying hardware.
@@ -31,11 +31,11 @@ Glucose-Syrup \footnote{http://www.labri.fr/perso/lsimon/glucose/} took 1st plac
 MiniSat \footnote{http://minisat.se/MiniSat.html} is one of the most common solvers used in the four cryptographic attacks above. MiniSat is a simple and efficient CDCL SAT solver and so has formed the base of many more advanced solvers over the last decade (in particular, MiniSat is the base of CryptoMiniSat). We will use the 2.0 release of the MiniSat solver, released in 2007, to provide a baseline for the algorithmic improvements of the other solvers.
 
 \subsection{Milestones}
-We expect to cover three major project milestones.
+We expect to cover three major project milestones (Note that we added Jonathan as a group member shortly after the initial project proposal and redistributed the work).
 \begin{enumerate}
 	\item By March 16th, we expect to have prepared our toolset for the analysis. In particular, we will set up the three SAT solvers listed in Section \ref{sec:existingtools} on the Rice DAVinCI cluster.
 	
-	\item By March 30th, we expect to have completed the first two of the attacks listed above. Jeffrey will replicate the attack by De at. al \cite{DKV07} and Corey will replicate the attack by Courtois and Bard \cite{CB07}.
+	\item By March 30th, we expect to have completed the attack by Soos et. al \cite{SNC09} listed above. We will work together on this task, each finding optimal parameters for a single solver.
 	
-	\item By April 22nd, we expect to have completed the other two attacks listed above. Jeffrey will replicate the attack by Morawiecki and Srebrny \cite{MS13} and Corey will replicate the attack by Soos et. al \cite{SNC09}.
+	\item By April 22nd, we expect to have completed the other three attacks. Jeffrey will replicate the attack by De at. al \cite{DKV07}, Corey will replicate the attack by Courtois and Bard \cite{CB07}, and Jonathan will replicate the attack by Morawiecki and Srebrny \cite{MS13}.
 \end{enumerate}
