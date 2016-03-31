@@ -1,6 +1,8 @@
 \section{Attacking the Crypto-1 stream-cipher}
 The Crypto-1 stream cipher is a simple cipher designed to have a minimal hardware footprint. We were able to solve the Crypto-1 cipher with 56 bits of known keystream. We generated 10 versions of the Crypto-1 cipher with Grain of Salt \footnote{http://www.msoos.org/grain-of-salt/}, a tool which can generate SAT formulas for a variety of shift register-based stream ciphers. We ran each solver on all 10 formulas and reported the average run time in Table \ref{table:crypto1:runtime}.
 
+Compared to Soos et. al \cite{SNC09}, we observe a 2.6x speedup from hardware improvements alone. Moreover, Glucose was able to achieve a 1.4x speedup relative to the MiniSat. CryptoMiniSat performed similarly to Glucose when XOR reasoning was disabled. In fact, CryptoMiniSat performed \textit{worse} when XOR reasoning was enabled. It is possible this is only due to an error in the solver configuration; we will investigate this further in the future.
+
 \begin{table}[!htbp]
 	\centering
 	\begin{tabular}{|c|c|c|}
@@ -19,6 +21,6 @@ The Crypto-1 stream cipher is a simple cipher designed to have a minimal hardwar
 		\hline
 	\end{tabular}
 	
-	\label{table:crypto1:runtime}
 	\caption{Average runtime to break the Crypto-1 cipher with 56 bits of keystream}
+	\label{table:crypto1:runtime}
 \end{table}
