@@ -1,16 +1,24 @@
 \section{Attacking the Crypto-1 stream-cipher}
-\begin{tabular}{|c|c|c|}
-	\hline
-	\textbf{Solver} & \textbf{Parameters} & \textbf{Time (s)} \\
-	\hline
-	MiniSat & - & 189.25 \\
-	\hline
-	\multirow{3}{*}{Glucose-Syrup} & 1 core & 133.59 \\ \cline{2-3}
-	 & 4 cores & 41.94 \\ \cline{2-3}
-	 & 8 cores & 33.26 \\
-	 \hline
-	 
-	 \multirow{2}{*}{CryptoMiniSat} & No {XORs} & 126.398 \\ \cline{2-3}
-	 & With {XORs} & 203.956 \\ \cline{2-3}
-	 \hline
-\end{tabular}
+The Crypto-1 stream cipher is a simple cipher designed to have a minimal hardware footprint. We were able to solve the Crypto-1 cipher with 56 bits of known keystream. We generated 10 versions of the Crypto-1 cipher with Grain of Salt \footnote{http://www.msoos.org/grain-of-salt/}, a tool which can generate SAT formulas for a variety of shift register-based stream ciphers. We ran each solver on all 10 formulas and reported the average run time in Table \ref{table:crypto1:runtime}.
+
+\begin{table}[!htbp]
+	\centering
+	\begin{tabular}{|c|c|c|}
+		\hline
+		\textbf{Solver} & \textbf{Parameters} & \textbf{Time (s)} \\
+		\hline
+		MiniSat & - & 189.25 \\
+		\hline
+		\multirow{3}{*}{Glucose-Syrup} & 1 core & 133.59 \\ \cline{2-3}
+		& 4 cores & 41.94 \\ \cline{2-3}
+		& 8 cores & 33.26 \\
+		\hline
+		
+		\multirow{2}{*}{CryptoMiniSat} & No {XORs} & 126.398 \\ \cline{2-3}
+		& With {XORs} & 203.956 \\ \cline{2-3}
+		\hline
+	\end{tabular}
+	
+	\label{table:crypto1:runtime}
+	\caption{Average runtime to break the Crypto-1 cipher with 56 bits of keystream}
+\end{table}
