@@ -3,7 +3,7 @@ The Data Encryption Standard (DES) is a symmetric-key block cipher algorithm bas
 
 DES normally takes place in 16 rounds. Bard and Cortois\cite{citation} used MiniSat2 to solve 6 rounds of DES in 68 seconds. We used their ANF files, available on Courtois's site\footnote{link}. We converted these ANF files into CNF files using Soos and Bettale's anf2cnf tool\footnote{link}. We found that even MiniSat2 could solve 6 rounds in under a second on our hardware. This is likely because they originally used a desktop machine. We instead solved other ANFs they had provided for attacking 8 rounds of DES with 16 chosen plaintexts to provide a more difficult problem to compare solvers on.
 
-We found that 
+We found that MiniSat performed almost identically on this problem to other solvers at their best, where CryptoMiniSat uses Gaussian elimination of XORs and Glucose is running on many cores. It is likely that Glucose is slow because of a failure of its preprocessor - on inputs with large numbers of clauses (14.5 million), it simply refuses to run. 
 
 \begin{table}[!htbp]
 	\centering
