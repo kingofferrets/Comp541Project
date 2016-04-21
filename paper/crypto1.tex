@@ -1,7 +1,7 @@
 \section{Attacking the Crypto-1 stream-cipher}
 The Crypto-1 stream cipher is a simple cipher designed to have a minimal hardware footprint. We were able to solve the Crypto-1 cipher with 56 bits of known keystream. We generated 10 versions of the Crypto-1 cipher with Grain of Salt \footnote{http://www.msoos.org/grain-of-salt/}, a tool which can generate SAT formulas for a variety of shift register-based stream ciphers. We ran each solver on all 10 formulas and reported the average run time in Table \ref{table:crypto1:runtime}.
 
-Compared to Soos et. al \cite{SNC09}, we observe a 2.6x speedup from hardware improvements alone. Moreover, Glucose was able to achieve a 1.4x speedup relative to the MiniSat. CryptoMiniSat performed similarly to Glucose when XOR reasoning was disabled. However, when XOR reasoning was enabled and combined with Gaussian elimination, we achieved an extra 2x speedup relative to no XOR reasoning. XOR reasoning was unhelpful without Gaussian elimination.
+Compared to Soos et. al \cite{SNC09}, we observe a 2.6x speedup from hardware improvements alone. Moreover, Glucose was able to achieve a 1.4x speedup relative to the MiniSat. CryptoMiniSat performed similarly to Glucose without Gaussian elimination of XOR clauses. With Gaussian elimination, we achieved another 2x speedup. 
 
 \begin{table}[!htbp]
 	\centering
@@ -16,9 +16,12 @@ Compared to Soos et. al \cite{SNC09}, we observe a 2.6x speedup from hardware im
 		& 8 cores & 33.26 \\
 		\hline
 		
-		\multirow{3}{*}{CryptoMiniSat} & No {XORs} & 127.948 \\ \cline{2-3} 
-		& With {XORs} & 128.129 \\ \cline{2-3} 
-		& With {XORs} and Gaussian & 61.637 \\ \cline{2-3}
+		\multirow{2}{*}{CryptoMiniSat4} & Without Gaussian & 128.129 \\ \cline{2-3} 
+		& With Gaussian & 61.637 \\ \cline{2-3}
+		\hline
+		
+		\multirow{2}{*}{CryptoMiniSat2.5} & No {XORs} & 55.802 \\ \cline{2-3} 
+		& With {XORs} & 60.226 \\ \cline{2-3}
 		\hline
 	\end{tabular}
 	
