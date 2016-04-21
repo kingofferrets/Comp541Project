@@ -5,25 +5,24 @@ DES normally takes place in 16 rounds. Bard and Cortois\cite{citation} used Mini
 
 We found that 
 
-%\begin{table}[!htbp]
-%	\centering
-%	\begin{tabular}{|c|c|c|}
-%		\hline
-%		\textbf{Solver} & \textbf{Parameters} & \textbf{Time (s)} \\
-%		\hline
-%		MiniSat & - & 189.25 \\
-%		\hline
-%		\multirow{3}{*}{Glucose-Syrup} & 1 core & 133.59 \\ \cline{2-3}
-%		& 4 cores & 41.94 \\ \cline{2-3}
-%		& 8 cores & 33.26 \\
-%		\hline
-%		
-%		\multirow{3}{*}{CryptoMiniSat} & No {XORs} & 127.948 \\ \cline{2-3} 
-%		& With {XORs} & 128.129 \\ \cline{2-3} 
-%		& With {XORs} and Gaussian & 61.637 \\ \cline{2-3}
-%		\hline
-%	\end{tabular}
-%	
-%	\caption{Average runtime to break the Crypto-1 cipher with 56 bits of keystream}
-%	\label{table:crypto1:runtime}
-%\end{table}
+\begin{table}[!htbp]
+	\centering
+	\begin{tabular}{|c|c|c|}
+		\hline
+		\textbf{Solver} & \textbf{Parameters} & \textbf{Time (s)} \\
+		\hline
+		MiniSat & - & 46.205 \\
+		\hline
+		\multirow{3}{*}{Glucose-Syrup} & 1 core & 85.485 \\ \cline{2-3}
+		& 4 cores & 71.7721 \\ \cline{2-3}
+		& 8 cores & 44.4717 \\
+		\hline
+		
+		\multirow{3}{*}{CryptoMiniSat} & With Gaussian & 44.515 \\ \cline{2-3} 
+		& Without Gaussian & 85.06 \\ \cline{2-3} 
+		\hline
+	\end{tabular}
+	
+	\caption{Average runtime to break DES with 16 chosen plaintexts}
+	\label{table:des:runtime}
+\end{table}
