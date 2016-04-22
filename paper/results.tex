@@ -10,21 +10,21 @@ We hypothesize that both CryptoMiniSat and Glucose will outperform MiniSat for t
 	\centering
 	\begin{tabular}{|c|c|c|c|c|c|}
 		\hline
-		\textbf{Solver} & \textbf{Parameters} & \textbf{Crypto1} & \textbf{MD4} & \textbf{DES} & \textbf{KECCAK} \\
+		\textbf{Solver} & \textbf{Parameters} & \textbf{Crypto1} & \textbf{MD4} & \textbf{DES} & \textbf{SHA-3} \\
 		\hline
-		MiniSat & - & 221.54 & . & 48.63 & .\\
+		MiniSat & - & 201.31 & 145.19 & 48.63 & .\\
 		\hline
-		\multirow{3}{*}{Glucose-Syrup} & 1 core & 191.83 & . & 94.16 & .\\ \cline{2-3}
-		& 4 cores & 68.86 & . & 54.30 & .\\ \cline{2-3}
-		& 8 cores & 39.56 & . & 40.73 & .\\
+		\multirow{3}{*}{Glucose-Syrup} & 1 core & 157.76 & 1504.96 & 94.16 & .\\ \cline{2-6}
+		& 4 cores & 64.53 & 499.33 & 54.30 & .\\ \cline{2-6}
+		& 8 cores & 39.05 & 313.95 & 40.73 & .\\
 		\hline
 		
-		\multirow{3}{*}{CryptoMiniSat} & v2.9 with Gaussian & 56.44 & . & 69.34 & . \\ \cline{2-3}
-		& v4 with Gaussian & 61.50 & . & 50.87 & . \\ \cline{2-3}
-		& v4 without Gaussian & 122.08 & . & 95.18 & .\\
+		\multirow{3}{*}{CryptoMiniSat} & v2 with Gaussian & 51.24 & 769.03 & 69.34 & . \\ \cline{2-6}
+		& v4 with Gaussian & 53.62 & 578.59 & 50.87 & . \\ \cline{2-6}
+		& v4 without Gaussian & 112.22 & 538.81 & 95.18 & .\\
 		\hline
 	\end{tabular}
 	
-	\caption{Average runtime on Cryptographic Benchmarks (s)}
+	\caption{Median runtime on Cryptographic Benchmarks (s)}
 	\label{table:crypto1:runtime}
 \end{table}
