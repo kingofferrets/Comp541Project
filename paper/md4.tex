@@ -2,4 +2,22 @@
 
 \label{sec:encoding:md4}
 
-In 2007, De et. al \cite{DKV07} used the MiniSat solver to perform an inversion attack on a weakened form of MD4 and MD5 hash functions, although this attack was infeasible against the full hash.
+In 2007, De et. al \cite{DKV07} used the MiniSat solver to perform an inversion attack on a weakened form of the MD4 hash function. MD4 effectively consists of 48 operations, split into 3 rounds of 16 steps each. De et. al limited the number of rounds and steps to simplify the attack. In particular, they were only able to invert MD4 up to 2 rounds of 7 steps each and reported that attacks against larger number of steps took more than 8 hours.
+
+Unfortunately, De et. al did not publish the SAT formulas used to encode limited forms of MD4. Instead, we created a custom python tool to encode limited forms of MD4 as SAT formulas. We generated 100 benchmarks using this tool representing the 3-round 7-step MD4 inversion of 100 randomly selected hash values.
+
+The benchmarks we generated were attacks against the 3-round 7-step version of MD4, a significantly stronger form of MD4 than the 2-round 7-step version of MD4 that De et. al were able to attack in under 8 hours. In fact, we were able to invert 2-round 7-step MD4 using the new encoding in only 0.17 seconds. We present below two inputs which hash to a special hex string using the 2-round 14-step version of MD4 and 3-round 9-step version of MD4. Note that each input is only 448 bits long; the remaining 64 bits are specified by the MD4 standard to be the size of the input.
+
+\begin{verbatim}
+MD4 2 ROUNDS 14 STEPS:
+0x8f41053aa6059c5d507706fb8c6cbcff223d78e827f57f59caf2fd59
+  368ed9d59c8a13c8d51cf309357db931b260f25b212471e96ba84dce
+OUTPUT: 0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+
+MD4 3 ROUNDS 9 STEPS:
+0xb651725110b6ecc29da64cd0b6fa6ab1f46122920f01cd4ed3538fa5
+  b397713f00cce5af5d39c70dc6796b74ffffffff4bd5c85a28463de0
+OUTPUT: 0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+\end{verbatim}
+
+
