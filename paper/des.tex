@@ -10,21 +10,25 @@ DES normally takes place in 16 rounds. Bard and Cortois\cite{citation} used Mini
 
 We found that MiniSat performed almost identically on this problem to other solvers at their best, where CryptoMiniSat uses Gaussian elimination of XORs and Glucose is running on many cores. It is likely that Glucose is slow because of a failure of its preprocessor - on inputs with large numbers of clauses (14.5 million), it simply refuses to run. 
 
+%do citations/links
+%do SatElite
+
 \begin{table}[!htbp]
 	\centering
 	\begin{tabular}{|c|c|c|}
 		\hline
 		\textbf{Solver} & \textbf{Parameters} & \textbf{Time (s)} \\
 		\hline
-		MiniSat & - & 46.205 \\
+		MiniSat & - & 48.632 \\
 		\hline
-		\multirow{3}{*}{Glucose-Syrup} & 1 core & 85.485 \\ \cline{2-3}
-		& 4 cores & 71.7721 \\ \cline{2-3}
-		& 8 cores & 44.4717 \\
+		\multirow{3}{*}{Glucose-Syrup} & 1 core & 94.156 \\ \cline{2-3}
+		& 4 cores & 54.296 \\ \cline{2-3}
+		& 8 cores & 40.729 \\
 		\hline
 		
-		\multirow{3}{*}{CryptoMiniSat} & With Gaussian & 44.515 \\ \cline{2-3} 
-		& Without Gaussian & 85.06 \\ \cline{2-3} 
+		\multirow{3}{*}{CryptoMiniSat} & With Gaussian & 50.865 \\ \cline{2-3} 
+		& Without Gaussian & 95.1833 \\ \cline{2-3} 
+		& CMS2.5 & 69.343 \\ \cline{2-3} 
 		\hline
 	\end{tabular}
 	

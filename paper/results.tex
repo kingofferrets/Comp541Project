@@ -12,16 +12,16 @@ We hypothesize that both CryptoMiniSat and Glucose will outperform MiniSat for t
 		\hline
 		\textbf{Solver} & \textbf{Parameters} & \textbf{Crypto1} & \textbf{MD4} & \textbf{DES} & \textbf{KECCAK} \\
 		\hline
-		MiniSat & - & 221.54 & . & . & .\\
+		MiniSat & - & 221.54 & . & 48.63 & .\\
 		\hline
-		\multirow{3}{*}{Glucose-Syrup} & 1 core & 191.83 & . & . & .\\ \cline{2-3}
-		& 4 cores & 68.86 & . & . & .\\ \cline{2-3}
-		& 8 cores & 39.56 & . & . & .\\
+		\multirow{3}{*}{Glucose-Syrup} & 1 core & 191.83 & . & 94.16 & .\\ \cline{2-3}
+		& 4 cores & 68.86 & . & 54.30 & .\\ \cline{2-3}
+		& 8 cores & 39.56 & . & 40.73 & .\\
 		\hline
 		
-		\multirow{3}{*}{CryptoMiniSat} & v2.9 with Gaussian & 56.44 & . & . & . \\ \cline{2-3}
-		& v4 with Gaussian & 61.50 & . & . & . \\ \cline{2-3}
-		& v4 without Gaussian & 122.08 & . & . & .\\
+		\multirow{3}{*}{CryptoMiniSat} & v2.9 with Gaussian & 56.44 & . & 69.34 & . \\ \cline{2-3}
+		& v4 with Gaussian & 61.50 & . & 50.87 & . \\ \cline{2-3}
+		& v4 without Gaussian & 122.08 & . & 95.18 & .\\
 		\hline
 	\end{tabular}
 	
