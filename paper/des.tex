@@ -1,5 +1,8 @@
-\section{Attacking DES}
+\subsection{DES}
 The Data Encryption Standard (DES) is a symmetric-key block cipher algorithm based on Feistel networks. It was the NBS standard for cryptography between 1977 and the early 2000s, when brute force attacks on its 56-bit key started to become feasible.\cite{find appropriate citation}
+
+% Note: this info used to be in the proposal; you may want to work this in to the body
+% A 2007 attack by Courtois and Bard on the DES \cite{CB07}, which does not rely on any particular aspect of DES but works on 6x4 S-boxes in general. The SAT attack broke 6 rounds of DES in 68 seconds using MiniSat.
 
 DES normally takes place in 16 rounds. Bard and Cortois\cite{citation} used MiniSat2 to solve 6 rounds of DES in 68 seconds. We used their ANF files, available on Courtois's site\footnote{link}. We converted these ANF files into CNF files using Soos and Bettale's anf2cnf tool\footnote{link}. We found that even MiniSat2 could solve 6 rounds in under a second on our hardware. This is likely because they originally used a desktop machine. We instead solved other ANFs they had provided for attacking 8 rounds of DES with 16 chosen plaintexts to provide a more difficult problem to compare solvers on.
 

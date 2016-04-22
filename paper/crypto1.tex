@@ -1,5 +1,5 @@
-\section{Attacking the Crypto-1 stream-cipher}
-The Crypto-1 stream cipher is a simple cipher designed to have a minimal hardware footprint. We were able to solve the Crypto-1 cipher with 56 bits of known keystream. We generated 10 versions of the Crypto-1 cipher with Grain of Salt \footnote{http://www.msoos.org/grain-of-salt/}, a tool which can generate SAT formulas for a variety of shift register-based stream ciphers. We ran each solver on all 10 formulas and reported the average run time in Table \ref{table:crypto1:runtime}.
+\subsection{The Crypto-1 Stream-Cipher}
+The Crypto-1 stream cipher is a simple cipher designed to have a minimal hardware footprint. We were able to solve the Crypto-1 cipher with 56 bits of known keystream. In 2009, Soos et. al \cite{SNC09} introduced the idea of XOR constraints on SAT solving, which led to the development of CryptoMiniSat. They attacked Bivium, Crypto-1, and HiTag2, with best success against Crypto-1. We generated 100 versions of the Crypto-1 cipher with Grain of Salt \footnote{http://www.msoos.org/grain-of-salt/}, a tool which can generate SAT formulas for a variety of shift register-based stream ciphers. We ran each solver on all 100 formulas and reported the average run time in Table \ref{table:crypto1:runtime}.
 
 Compared to Soos et. al \cite{SNC09}, we observe a 2.6x speedup from hardware improvements alone. Moreover, Glucose was able to achieve a 1.4x speedup relative to the MiniSat. CryptoMiniSat performed similarly to Glucose without Gaussian elimination of XOR clauses. With Gaussian elimination, we achieved another 2x speedup. 
 
@@ -9,19 +9,16 @@ Compared to Soos et. al \cite{SNC09}, we observe a 2.6x speedup from hardware im
 		\hline
 		\textbf{Solver} & \textbf{Parameters} & \textbf{Time (s)} \\
 		\hline
-		MiniSat & - & 189.25 \\
+		MiniSat & - & 221.54 \\
 		\hline
-		\multirow{3}{*}{Glucose-Syrup} & 1 core & 133.59 \\ \cline{2-3}
-		& 4 cores & 41.94 \\ \cline{2-3}
-		& 8 cores & 33.26 \\
-		\hline
-		
-		\multirow{2}{*}{CryptoMiniSat4} & With Gaussian & 61.637 \\ \cline{2-3}
-		& Without Gaussian & 128.129 \\ \cline{2-3} 
+		\multirow{3}{*}{Glucose-Syrup} & 1 core & 191.83 \\ \cline{2-3}
+		& 4 cores & 68.86 \\ \cline{2-3}
+		& 8 cores & 39.56 \\
 		\hline
 		
-		\multirow{2}{*}{CryptoMiniSat2.5} & No {XORs} & 55.802 \\ \cline{2-3} 
-		& With {XORs} & 60.226 \\ \cline{2-3}
+		\multirow{3}{*}{CryptoMiniSat} & v2.9 with Gaussian & 56.44 \\ \cline{2-3}
+		& v4 with Gaussian & 61.50 \\ \cline{2-3}
+		& v4 without Gaussian & 122.08 \\
 		\hline
 	\end{tabular}
 	
