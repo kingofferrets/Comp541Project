@@ -12,26 +12,3 @@ We found that MiniSat performed almost identically on this problem to other solv
 
 %do citations/links
 %do SatElite
-
-\begin{table}[!htbp]
-	\centering
-	\begin{tabular}{|c|c|c|}
-		\hline
-		\textbf{Solver} & \textbf{Parameters} & \textbf{Time (s)} \\
-		\hline
-		MiniSat & - & 48.632 \\
-		\hline
-		\multirow{3}{*}{Glucose-Syrup} & 1 core & 94.156 \\ \cline{2-3}
-		& 4 cores & 54.296 \\ \cline{2-3}
-		& 8 cores & 40.729 \\
-		\hline
-		
-		\multirow{3}{*}{CryptoMiniSat} & With Gaussian & 50.865 \\ \cline{2-3} 
-		& Without Gaussian & 95.1833 \\ \cline{2-3} 
-		& CMS2.5 & 69.343 \\ \cline{2-3} 
-		\hline
-	\end{tabular}
-	
-	\caption{Average runtime to break DES with 16 chosen plaintexts}
-	\label{table:des:runtime}
-\end{table}
