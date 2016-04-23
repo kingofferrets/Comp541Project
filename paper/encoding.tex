@@ -1,7 +1,7 @@
 \section{Creating SAT Formula Benchmarks}
 \label{sec:encoding}
 
-In this section, we generate SAT formulas that encode attacks on various cryptographic ciphers and hash functions. In particular we encode two ciphers-- the Crypto-1 Stream-Cipher and DES-- and two hash functions-- MD4 and SHA-3-- as SAT formulas. A \emph{SAT Formula} is the disjunction of or-clauses and xor-clauses; we define this more carefully in Section \ref{sec:encoding:desc}. In Section \ref{sec:encoding:desc} we describe exactly what we mean by a SAT formula that encodes an attack on a cryptographic tool. In Sections \ref{sec:encoding:crypto1}, \ref{sec:encoding:md4}, \ref{sec:encoding:des}, and \ref{sec:encoding:keccak} we discuss the details of encoding each attack.
+In this section, we generate SAT formulas that encode attacks on various cryptographic ciphers and hash functions. In particular we encode two ciphers-- the Crypto-1 Stream-Cipher and DES-- and one hash function-- MD4-- as SAT formulas. A \emph{SAT Formula} is the disjunction of or-clauses and xor-clauses; we define this more carefully in Section \ref{sec:encoding:desc}. In Section \ref{sec:encoding:desc} we describe exactly what we mean by a SAT formula that encodes an attack on a cryptographic tool. In Sections \ref{sec:encoding:crypto1}, \ref{sec:encoding:md4}, and \ref{sec:encoding:des} we discuss the details of encoding each attack.
 
 \subsection{SAT: Boolean Satisfiability}
 \label{sec:encoding:sat}
