@@ -1,28 +1,26 @@
 \section{Experimental Results}
 \label{sec:results}
 
-We hypothesize that SAT solvers have noticeably improved as a tool for algebraic cryptanalysis. In Section \ref{sec:encoding}, we construct SAT formula benchmarks which encode attacks on cryptographic tools. 
-
-To test this hypothesis, we compare the performance of a selection of SAT solvers on these benchmarks. In particular, we use two modern SAT solvers, CryptoMiniSat and Glucose, and an older SAT solver MiniSat. These solvers are described in more detail in Section \ref{sec:related:solvers}. Glucose is designed to be run in parallel and so we run Glucose on each benchmark using 1, 4, and 8 cores. All other solvers are run on a single core in single threaded mode. CryptoMiniSat optionally allows for the use of Gaussian Elimination while solving problems with XOR clauses; we run CryptoMiniSat with this type of reasoning both enabled and disabled in order to compare the impact of Gaussian elimination. Furthermore, we run an older version of CryptoMiniSat in order to study the change in the effectiveness of Gaussian elimination over the development of the solver.
+We hypothesize that SAT solvers have noticeably improved as a tool for algebraic cryptanalysis. To test this hypothesis, we compare the performance of a selection of SAT solvers on the cryptographic benchmarks constructed in section \ref{sec:encoding}. In particular, we use two modern SAT solvers, CryptoMiniSat and Glucose, and an older SAT solver MiniSat. These solvers are described in more detail in Section \ref{sec:related:solvers}. Glucose is designed to be run in parallel and so we run Glucose on each benchmark using 1, 4, and 8 cores. All other solvers are run on a single core in single threaded mode. CryptoMiniSat optionally allows for the use of Gaussian Elimination while solving problems with XOR clauses; we run CryptoMiniSat with this type of reasoning both enabled and disabled in order to compare the impact of Gaussian elimination. Furthermore, we run an older version of CryptoMiniSat in order to study the change in the effectiveness of Gaussian elimination over the development of the solver. All experiments were run on a node within the Rice DAVinCI high-performance computer cluster. These nodes contain 12-processor cores at 2.83 GHz each with 48 GB of RAM per node.
 
 We hypothesize that both CryptoMiniSat and Glucose have improved over the last ten years on cryptographic problems and so will outperform MiniSat on these benchmarks. By comparing modern solvers to a contemporary solver, instead of comparing the performance of modern solvers directly to the results reported in each prior work, we can isolate the algorithmic improvement of SAT solvers from the improvement in the underlying hardware or encoding.
 
 \begin{table}[!htbp]
 	\centering
-	\begin{tabular}{|c|c|c|c|c|c|}
+	\begin{tabular}{|c|c|c|c|c|}
 		\hline
-		\textbf{Solver} & \textbf{Parameters} & \textbf{Crypto1} & \textbf{MD4} & \textbf{DES} & \textbf{SHA-3} \\
+		\textbf{Solver} & \textbf{Parameters} & \textbf{Crypto1} & \textbf{MD4} & \textbf{DES}\\
 		\hline
-		MiniSat & - & 201.31 & 145.19 & 47.41 & .\\
+		MiniSat & - & 201.31 & 145.19 & 47.41\\
 		\hline
-		\multirow{3}{*}{Glucose-Syrup} & 1 core & 157.76 & 1504.96 & 96.82 & .\\ \cline{2-6}
-		& 4 cores & 64.53 & 499.33 & 51.96 & .\\ \cline{2-6}
-		& 8 cores & 39.05 & 313.95 & 40.90 & .\\
+		\multirow{3}{*}{Glucose-Syrup} & 1 core & 157.76 & 1504.96 & 96.82 \\ \cline{2-5}
+		& 4 cores & 64.53 & 499.33 & 51.96 \\ \cline{2-5}
+		& 8 cores & 39.05 & 313.95 & 40.90 \\
 		\hline
 		
-		\multirow{3}{*}{CryptoMiniSat} & v2 with Gaussian & 51.24 & 769.03 & 61.08 & . \\ \cline{2-6}
-		& v4 with Gaussian & 53.62 & 578.59 & 49.27 & . \\ \cline{2-6}
-		& v4 without Gaussian & 112.22 & 538.81 & 98.01 & .\\
+		\multirow{3}{*}{CryptoMiniSat} & v2 with Gaussian & 51.24 & 769.03 & 61.08 \\ \cline{2-5}
+		& v4 with Gaussian & 53.62 & 578.59 & 49.27 \\ \cline{2-5}
+		& v4 without Gaussian & 112.22 & 538.81 & 98.01 \\
 		\hline
 	\end{tabular}
 	
@@ -30,4 +28,4 @@ We hypothesize that both CryptoMiniSat and Glucose have improved over the last t
 	\label{table:all:runtime}
 \end{table}
 
-The results on all solvers across all the benchmarks is collected in Table \ref{table:all:runtime}. We observe that the relative performance of the solvers changes significantly across problems -- for example, MiniSat2 is the worst solver for SAT problems based on Crypto1, and the best for those based on DES. SAT solver performance for cryptanalytic problems has not gotten better, worse, or even stayed the same in the past 10 years. Instead, it has done all of those for different problems. Our results do not give proof of why this is, but might suggest a few possible answers to be examined. It might be that ``SAT solving for cryptanalysis'' is not a useful grouping of problems, and must be further subdivided into SAT solvers for block ciphers or hash functions to find useful correlations. Alternatively, because current SAT solver heuristics are not built for cryptanalysis, they are only occassionally are helpful with cryptanalytic problems. It could also be that the techniques we used to generate the ANF equations are too different, and a more unified approach to generating equations from ciphers would give better results, or any combination of those.
+The results on all solvers across all the benchmarks is collected in Table \ref{table:all:runtime}. We observe that the relative performance of the solvers changes significantly across problems -- for example, MiniSat is the worst solver for SAT problems based on Crypto1, and the best for those based on DES and on MD4. SAT solver performance for cryptanalytic problems has not gotten better, worse, or even stayed the same in the past 10 years. Instead, it has done all of those for different problems. Our results do not give proof of why this is, but might suggest a few possible answers to be examined further. It might be that ``SAT solving for cryptanalysis'' is not a useful grouping of problems, and must be further subdivided into SAT solvers for block ciphers or hash functions to find useful correlations. Alternatively, these SAT solvers are built to be general purpose solvers; their internal heuristics are not necessarily the best for cryptanalytic problems. It could also be that the techniques we used to encode cryptographic attacks as SAT formulas are too different; a more unified approach to generating equations from ciphers could give better results.
