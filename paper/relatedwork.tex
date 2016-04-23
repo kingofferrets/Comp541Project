@@ -15,11 +15,11 @@ These techniques can also be applied to attack hash functions. Mironov and Zhang
 
 We will compare the performance of three SAT solvers across a variety of cryptographic problems. More specifically, we have selected to test a modern incremental solver CryptoMiniSat, a modern parallel solver Glucose-Syrup, and an older solver MiniSat.
 
-CryptoMiniSat \footnote{http://www.msoos.org/cryptominisat4/} tied for 1st in the Incremental track of the recent 2015 SAT-Race. CryptoMiniSat is the result of the work of Soos et. al \cite{SNC09} to extend MiniSat to work more naturally on cryptographic problems.  In particular, CryptoMiniSat natively supports XOR constraints directly and avoids reducing the XOR constraints into CNF. We will use the 4.5.3 release of the CryptoMiniSat solver.
+CryptoMiniSat\footnote{http://www.msoos.org/cryptominisat4/} tied for 1st in the Incremental track of the recent 2015 SAT-Race. CryptoMiniSat is the result of the work of Soos et. al \cite{SNC09} to extend MiniSat to work more naturally on cryptographic problems.  In particular, CryptoMiniSat natively supports XOR constraints directly and avoids reducing the XOR constraints into CNF. We will use the 4.5.3 release of the CryptoMiniSat solver.
 
-Glucose-Syrup \footnote{http://www.labri.fr/perso/lsimon/glucose/} took 1st place in the Parallel track and 3rd place in the Incremental track of the recent 2015 SAT Race. Glucose is a parallel solver which specializes in the addition and deletion of learned clauses. We will use the 4.0 release of the Glucose solver.
+Glucose-Syrup\footnote{http://www.labri.fr/perso/lsimon/glucose/} took 1st place in the Parallel track and 3rd place in the Incremental track of the recent 2015 SAT Race. Glucose is a parallel solver which specializes in the addition and deletion of learned clauses. We will use the 4.0 release of the Glucose solver.
 
-MiniSat \footnote{http://minisat.se/MiniSat.html} is one of the most common solvers used in the four cryptographic attacks above. MiniSat is a simple and efficient CDCL SAT solver and so has formed the base of many more advanced solvers over the last decade (in particular, MiniSat is the base of CryptoMiniSat). We will use the 2.0 release of the MiniSat solver, released in 2007, to provide a baseline for the algorithmic improvements of the other solvers.
+MiniSat\footnote{http://minisat.se/MiniSat.html} is one of the most common solvers used in the four cryptographic attacks above. MiniSat is a simple and efficient CDCL SAT solver and so has formed the base of many more advanced solvers over the last decade (in particular, MiniSat is the base of CryptoMiniSat). We will use the 2.0 release of the MiniSat solver, released in 2007, to provide a baseline for the algorithmic improvements of the other solvers.
 
 \subsection{Alternatives to SAT Solvers}
 \label{sec:related:otherattacks}
