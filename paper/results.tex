@@ -1,10 +1,11 @@
 \section{Experimental Results}
 \label{sec:results}
 
+We hypothesize that SAT solvers have noticeably improved as a tool for algebraic cryptanalysis. In Section \ref{sec:encoding}, we construct SAT formula benchmarks which encode attacks on cryptographic tools. 
 
-To test this hypothesis, we use two modern SAT solvers, CryptoMiniSat and Glucose, and an older SAT solver MiniSat. These solvers are described in more detail in Section \ref{sec:related:solvers}. 
-We hypothesize that both CryptoMiniSat and Glucose will outperform MiniSat for these attacks. By comparing modern solvers to a contemporary solver, instead of comparing the performance of modern solvers directly to the results reported in each prior work, we hope to isolate the algorithmic improvement of SAT solvers from the improvement in the underlying hardware.
+To test this hypothesis, we compare the performance of a selection of SAT solvers on these benchmarks. In particular, we use two modern SAT solvers, CryptoMiniSat and Glucose, and an older SAT solver MiniSat. These solvers are described in more detail in Section \ref{sec:related:solvers}. Glucose is designed to be run in parallel and so we run Glucose on each benchmark using 1, 4, and 8 cores. All other solvers are run on a single core in single threaded mode. CryptoMiniSat optionally allows for the use of Gaussian Elimination while solving problems with XOR clauses; we run CryptoMiniSat with this type of reasoning both enabled and disabled in order to compare the impact of Gaussian elimination. Furthermore, we run an older version of CryptoMiniSat in order to study the change in the effectiveness of Gaussian elimination over the development of the solver.
 
+We hypothesize that both CryptoMiniSat and Glucose have improved over the last ten years on cryptographic problems and so will outperform MiniSat on these benchmarks. By comparing modern solvers to a contemporary solver, instead of comparing the performance of modern solvers directly to the results reported in each prior work, we can isolate the algorithmic improvement of SAT solvers from the improvement in the underlying hardware or encoding.
 
 \begin{table}[!htbp]
 	\centering
@@ -26,5 +27,7 @@ We hypothesize that both CryptoMiniSat and Glucose will outperform MiniSat for t
 	\end{tabular}
 	
 	\caption{Median runtime on Cryptographic Benchmarks (s)}
-	\label{table:crypto1:runtime}
+	\label{table:all:runtime}
 \end{table}
+
+The results on all solvers across all the benchmarks is collected in Table \ref{table:all:runtime}. We observe that the relative performance
