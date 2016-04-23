@@ -1,10 +1,6 @@
 \section{Related Work}
 \label{sec:related}
-We cover here four main areas of related work. In Section \ref{sec:related:extraction} we cover the extraction of SAT equations from cryptographic algorithms. In Section \ref{sec:related:satattacks} we cover in more detail previous cryptographic attacks through SAT solvers. In Section \ref{sec:related:solvers} we discuss in more detail the SAT solvers we will be using. Finally, in Section \ref{sec:related:otherattacks} we cover alternative approaches to SAT solving for Algebraic Cryptanalysis. 
-
-\subsection{From Cryptography to SAT}
-\label{sec:related:extraction}
-Algebraic equations extracted from cryptographic algorithms are often naturally expressed in algebraic normal form (ANF). We are unaware of any tools which can effectively solve ANF equations directly. Instead the algebraic equations are converted into an alternative form and fed into an equation solver. As seen in work by Bard et. al \cite{BCJ07}, the algebraic equations are most commonly rewritten as a boolean formula and solved using a SAT solver. Some tool-sets like CryptLogVer \cite{MS13} exist to ease this conversion. Feasible SAT solving directly translates to feasible cryptographic attacks.
+We cover here three main areas of related work. In Section \ref{sec:related:satattacks} we cover in more detail previous cryptographic attacks through SAT solvers. In Section \ref{sec:related:solvers} we discuss in more detail the SAT solvers we will be using. Finally, in Section \ref{sec:related:otherattacks} we cover alternative approaches to SAT solving for Algebraic Cryptanalysis. 
 
 \subsection{Cryptographic attacks using SAT Solvers}
 \label{sec:related:satattacks}
